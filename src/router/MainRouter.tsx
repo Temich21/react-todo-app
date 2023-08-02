@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom'
-import { IRoute, routePublic } from '@/router/routes/routePublic'
-import { routeDashboard } from '@/router/routes/routeDashboard'
+import { IRoute, routePublic } from './routes/routePublic'
+import { routeDashboard } from './routes/routeDashboard'
 import { CssBaseline } from '@mui/material'
 import * as React from 'react'
-import { ThemeSettingProvider } from '@/theme/theme'
+import { ThemeSettingProvider } from '../theme/theme'
 
 const ReturnComponent = (Component: React.ComponentType) => {
     return <Component />

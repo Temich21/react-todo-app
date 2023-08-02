@@ -1,3 +1,12 @@
+import { Form } from "../../components/form/Form"
+import { ToDoList } from "../../components/todolist/ToDoList"
+
 export const Dashboard = () => {
-    return <h2>DashBoard</h2>
+    return (
+        <main style={{ marginLeft: '20px' }}>
+            <h2>DashBoard</h2>
+            <Form />
+            <ToDoList />
+        </main >
+    )
 }

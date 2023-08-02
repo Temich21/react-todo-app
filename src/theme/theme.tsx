@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useEffect, useMemo, useState } from 'react'
 import { ThemeProvider } from '@mui/material'
-import { lightTheme } from '@/theme/lightTheme.mode'
-import { darkTheme } from '@/theme/darkTheme.mode'
+import { lightTheme } from './lightTheme.mode'
+import { darkTheme } from './darkTheme.mode'
 
 export const light = lightTheme
 export const dark = darkTheme
