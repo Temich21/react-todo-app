@@ -5,18 +5,31 @@ import * as Yup from 'yup'
 import { IToDo } from "../../models/IToDo"
 import { FormControl, Input, FormHelperText, Button, TextField } from '@mui/material'
 import { unixTimeStampConverter } from "../../utils/timeConverters"
+import { firestore } from "../../firebase"
+import { addDoc, collection } from "firebase/firestore"
+import { IData } from "../../models/IData"
 
 export const Form = () => {
     const { addToDo } = toDoSlice.actions
     const dispatch = useAppDispatch()
+    const ref = collection(firestore, 'todos')
 
     const submit = (values: IToDo) => {
-        dispatch(addToDo({
+        const data: IData = {
             id: Number(new Date),
             name: values.name,
             description: values.description,
             time: unixTimeStampConverter(values.time)
-        }))
+        }
+
+        dispatch(addToDo(data))
+
+        try {
+            addDoc(ref, data)
+        }
+        catch (e) {
+            console.log(e)
+        }
     }
 
     const formik = useFormik({
@@ -82,7 +95,5 @@ export const Form = () => {
             }
             <Button type="submit" variant="contained" color="primary">Add to To Do list</Button>
         </FormControl>
-
-
     )
 }
